@@ -19,8 +19,8 @@ public partial class Player : CharacterBody3D
     public override void _Input(InputEvent @event)
     {
         direction = Input.GetVector(
-            GameConstants.ANIM_LEFT,GameConstants.ANIM_RIGHT,
-            GameConstants.ANIM_FORWARD,GameConstants.ANIM_BACK
+            GameConstants.INPUT_LEFT,GameConstants.INPUT_RIGHT,
+            GameConstants.INPUT_FORWARD,GameConstants.INPUT_BACK
         );
     }
     private void Flip()
