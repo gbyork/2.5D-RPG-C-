@@ -7,14 +7,6 @@ public partial class Player : CharacterBody3D
     [Export] public Sprite3D sprite3DNode;
     [Export] public StateMachine stateMachineNode;
     public Vector2 direction = new();
-    public override void _PhysicsProcess(double delta)
-    {
-        Velocity = new(direction.X, 0, direction.Y);
-        Velocity *= 5;
-
-        MoveAndSlide();
-        Flip();
-    }
 
     public override void _Input(InputEvent @event)
     {
@@ -23,7 +15,7 @@ public partial class Player : CharacterBody3D
             GameConstants.INPUT_FORWARD,GameConstants.INPUT_BACK
         );
     }
-    private void Flip()
+    public void Flip()
     {
         bool isNotMovingHorizontally = Velocity.X == 0;
 
