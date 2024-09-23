@@ -42,6 +42,23 @@
 [ext_resource type="Texture2D" uid="uid://b16vtxvnxg7r1" path="res://Assets/Assets/Sprites/Characters/Player/Sliding/Sliding_005.png" id="37_hgip2"]
 [ext_resource type="Script" path="res://Scripts/Characters/Player/PlayerDashState.cs" id="41_5vkk1"]
 
+[sub_resource type="Animation" id="Animation_30hbp"]
+resource_name = "Dash"
+length = 0.333339
+step = 0.166667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0555556, 0.166667, 0.222222, 0.277778, 0.333333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("32_qi0ex"), ExtResource("33_r670a"), ExtResource("34_2xj33"), ExtResource("35_vdx36"), ExtResource("36_hcvb4"), ExtResource("37_hgip2")]
+}
+
 [sub_resource type="Animation" id="Animation_cf2yi"]
 resource_name = "Idle"
 loop_mode = 1
@@ -76,23 +93,6 @@ tracks/0/keys = {
 "values": [ExtResource("1_jm7lr"), ExtResource("20_17jdg"), ExtResource("21_vhrts"), ExtResource("22_ov0fy"), ExtResource("23_vqkp0"), ExtResource("24_ycsvp"), ExtResource("25_n23sx"), ExtResource("26_lqinf"), ExtResource("27_3ng6d"), ExtResource("28_gd6t2"), ExtResource("29_ahpc6"), ExtResource("30_tjoe3")]
 }
 
-[sub_resource type="Animation" id="Animation_30hbp"]
-resource_name = "Dash"
-length = 0.333339
-step = 0.166667
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite3D:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.0555556, 0.166667, 0.222222, 0.277778, 0.333333),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [ExtResource("32_qi0ex"), ExtResource("33_r670a"), ExtResource("34_2xj33"), ExtResource("35_vdx36"), ExtResource("36_hcvb4"), ExtResource("37_hgip2")]
-}
-
 [sub_resource type="Animation" id="Animation_moyki"]
 length = 0.001
 tracks/0/type = "value"
@@ -116,11 +116,11 @@ _data = {
 "RESET": SubResource("Animation_moyki")
 }
 
-[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("animationPlayerNode", "sprite3DNode", "stateMachineNode")]
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("AnimationPlayerNode", "SpriteNode", "StateMachineNode")]
 script = ExtResource("1_56htn")
-animationPlayerNode = NodePath("AnimationPlayer")
-sprite3DNode = NodePath("Sprite3D")
-stateMachineNode = NodePath("StateMachine")
+AnimationPlayerNode = NodePath("AnimationPlayer")
+SpriteNode = NodePath("Sprite3D")
+StateMachineNode = NodePath("StateMachine")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 texture_filter = 0
