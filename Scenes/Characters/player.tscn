@@ -35,11 +35,11 @@
 [ext_resource type="Script" path="res://Scripts/Characters/Player/PlayerIdleState.cs" id="32_qqewp"]
 [ext_resource type="Script" path="res://Scripts/Characters/Player/PlayerMoveState.cs" id="33_a3n4k"]
 [ext_resource type="Texture2D" uid="uid://cmsmct5x5pupw" path="res://Assets/Assets/Sprites/Characters/Player/Sliding/Sliding_000.png" id="33_r670a"]
-[ext_resource type="Script" path="res://Scripts/Characters/StateMachine.cs" id="34_0we8d"]
 [ext_resource type="Texture2D" uid="uid://x1xp0jinwsxm" path="res://Assets/Assets/Sprites/Characters/Player/Sliding/Sliding_002.png" id="34_2xj33"]
 [ext_resource type="Texture2D" uid="uid://bapt2hkd1ncgk" path="res://Assets/Assets/Sprites/Characters/Player/Sliding/Sliding_003.png" id="35_vdx36"]
 [ext_resource type="Texture2D" uid="uid://cnnhdmyeogtx1" path="res://Assets/Assets/Sprites/Characters/Player/Sliding/Sliding_004.png" id="36_hcvb4"]
 [ext_resource type="Texture2D" uid="uid://b16vtxvnxg7r1" path="res://Assets/Assets/Sprites/Characters/Player/Sliding/Sliding_005.png" id="37_hgip2"]
+[ext_resource type="PackedScene" uid="uid://cj8wtxo0hxcfn" path="res://Scenes/Characters/state_machine.tscn" id="38_e0ro3"]
 [ext_resource type="Script" path="res://Scripts/Characters/Player/PlayerDashState.cs" id="41_5vkk1"]
 
 [sub_resource type="Animation" id="Animation_30hbp"]
@@ -121,8 +121,9 @@ height = 1.49689
 
 [node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("AnimationPlayerNode", "SpriteNode", "StateMachineNode")]
 collision_layer = 2
+floor_stop_on_slope = false
 floor_max_angle = 3.14159
-floor_snap_length = 0.2
+floor_snap_length = 0.8
 script = ExtResource("1_56htn")
 AnimationPlayerNode = NodePath("AnimationPlayer")
 SpriteNode = NodePath("Sprite3D")
@@ -138,8 +139,7 @@ libraries = {
 "": SubResource("AnimationLibrary_tsisn")
 }
 
-[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("currentState", "states")]
-script = ExtResource("34_0we8d")
+[node name="StateMachine" parent="." node_paths=PackedStringArray("currentState", "states") instance=ExtResource("38_e0ro3")]
 currentState = NodePath("IdleState")
 states = [NodePath("IdleState"), NodePath("MoveState"), NodePath("DashState")]
 
